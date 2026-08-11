@@ -1,5 +1,4 @@
-# ⚠️ เปลี่ยน www.kaoiyok.com ให้เป็นโดเมนจริงของคุณ
 User-agent: *
 Allow: /
 
-Sitemap: https://www.kaoiyok.com/sitemap.xml
+Sitemap: https://kaoiyok-elderlycare.com/sitemap.xml

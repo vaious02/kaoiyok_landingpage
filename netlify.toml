@@ -18,10 +18,10 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-# ถ้าใช้โดเมนตัวเอง ให้เลือกใช้ www หรือไม่ใช้ www อย่างใดอย่างหนึ่ง แล้ว redirect อีกอันมาหา
-# (แก้ให้ตรงกับ canonical ใน index.html แล้วลบเครื่องหมาย # ออก)
-# [[redirects]]
-#   from = "https://kaoiyok.com/*"
-#   to = "https://www.kaoiyok.com/:splat"
-#   status = 301
-#   force = true
+# โดเมนหลักคือแบบไม่มี www ตาม canonical ใน index.html
+# ถ้ามีคนเข้าผ่าน www ให้เด้งมาที่โดเมนหลัก จะได้ไม่นับเป็นสองหน้าซ้ำกัน
+[[redirects]]
+  from = "https://www.kaoiyok-elderlycare.com/*"
+  to = "https://kaoiyok-elderlycare.com/:splat"
+  status = 301
+  force = true
