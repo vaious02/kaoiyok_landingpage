@@ -35,7 +35,12 @@
   "description": "ศูนย์ดูแลผู้สูงอายุเก้าอี้โยก ลาดพร้าว กรุงเทพฯ รับดูแลผู้สูงอายุระยะยาว รายวัน ผู้ป่วยพักฟื้น กายภาพบำบัด ผู้ป่วยติดเตียง ตลอด 24 ชม. เริ่มต้น 29,000 บาท/เดือน",
   "url": "https://kaoiyok-elderlycare.com/",
   "logo": "https://kaoiyok-elderlycare.com/apple-touch-icon.png",
-  "image": "https://i.postimg.cc/C11ksv2S/DSC05382.png",
+  "image": [
+    "https://i.postimg.cc/C11ksv2S/DSC05382.png",
+    "https://i.postimg.cc/BvzsJJFt/DSC05469.png",
+    "https://i.postimg.cc/g2mD6KGW/DSC05437.png",
+    "https://i.postimg.cc/nL9Wjh1n/DSC05338.png"
+  ],
   "telephone": "+66995691442",
   "priceRange": "฿฿",
   "currenciesAccepted": "THB",
@@ -48,10 +53,40 @@
     "postalCode": "10230",
     "addressCountry": "TH"
   },
-  "areaServed": {
-    "@type": "City",
-    "name": "กรุงเทพมหานคร"
-  },
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "กรุงเทพมหานคร"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "เขตลาดพร้าว"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "เขตวังทองหลาง"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "เขตบึงกุ่ม"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "เขตบางกะปิ"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "เขตบางเขน"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "เขตจตุจักร"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "เขตคันนายาว"
+    }
+  ],
   "openingHoursSpecification": [
     {
       "@type": "OpeningHoursSpecification",
@@ -156,6 +191,14 @@
           "name": "บริการ Day Care กิจกรรมฟื้นฟูผู้ป่วยสมองเสื่อม"
         }
       }
+    ]
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer service",
+    "telephone": "+66995691442",
+    "availableLanguage": [
+      "th"
     ]
   }
 }
@@ -432,6 +475,7 @@
 
   /* CONTACT */
   .contact{background:var(--cream-2)}
+  .contact .sec-head .area{font-size:.95rem;color:var(--brown-soft);margin-top:10px}
   .contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:48px;align-items:start}
   .contact-info{display:flex;flex-direction:column;gap:18px}
   .contact-item{display:flex;gap:18px;align-items:flex-start;background:var(--white);border:1px solid var(--line);border-radius:18px;padding:22px 24px;transition:transform .25s}
@@ -753,6 +797,7 @@
       <span class="sec-tag">ติดต่อเรา</span>
       <h2>ปรึกษาหรือนัดเข้าชมสถานที่</h2>
       <p>ทีมงานยินดีให้คำปรึกษาและพาเยี่ยมชมศูนย์ ติดต่อเราได้ทุกช่องทาง</p>
+      <p class="area">ศูนย์ตั้งอยู่ในเขตลาดพร้าว กรุงเทพมหานคร ย่านถนนประเสริฐมนูกิจ (เกษตร–นวมินทร์) สะดวกสำหรับครอบครัวย่านลาดพร้าว วังทองหลาง บึงกุ่ม บางกะปิ บางเขน จตุจักร และคันนายาว</p>
     </div>
     <div class="contact-grid">
       <div class="contact-info reveal">
