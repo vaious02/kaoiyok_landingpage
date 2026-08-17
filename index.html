@@ -938,6 +938,32 @@
     else if(e.key==='ArrowLeft')show(idx-1);
     else if(e.key==='ArrowRight')show(idx+1);
   });
+  // ── Google Ads conversion tracking ─────────────────────────────────
+  // วาง Conversion label จาก Google Ads ลงในเครื่องหมายคำพูด แล้วการกดปุ่มติดต่อจะถูกนับเป็น conversion
+  // หาได้ที่: Google Ads → Goals → Conversions → เลือก conversion action → "ติดแท็กเอง"
+  // ในโค้ดที่ Google ให้มาจะเป็น 'AW-18286755759/AbC-D_efGhIjKl' — เอาเฉพาะส่วนหลังเครื่องหมาย /
+  // ถ้ามี conversion action เดียว วาง label เดิมซ้ำได้ทุกช่อง
+  const ADS_LABELS = {
+    call:     '',   // กดเบอร์โทร
+    line:     '',   // กดแอดไลน์
+    facebook: '',   // กด Facebook
+    map:      ''    // กดดูแผนที่
+  };
+  const CONTACT_LINKS = {
+    call:     'a[href^="tel:"]',
+    line:     'a[href*="lin.ee"]',
+    facebook: 'a[href*="facebook.com"]',
+    map:      'a[href*="maps.app.goo.gl"]'
+  };
+  Object.entries(CONTACT_LINKS).forEach(([channel,sel])=>{
+    document.querySelectorAll(sel).forEach(a=>a.addEventListener('click',()=>{
+      if(typeof gtag!=='function')return;
+      const label=ADS_LABELS[channel];
+      if(label)gtag('event','conversion',{send_to:'AW-18286755759/'+label,event_label:channel});
+      gtag('event','contact_click',{channel:channel});
+    }));
+  });
+
   let touchX=null;
   lb.addEventListener('touchstart',e=>{touchX=e.changedTouches[0].clientX;},{passive:true});
   lb.addEventListener('touchend',e=>{
