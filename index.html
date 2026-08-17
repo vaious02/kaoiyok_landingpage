@@ -6,13 +6,32 @@
 
 <!-- Google tag (gtag.js) — Google Ads AW-18286755759 -->
 <link rel="preconnect" href="https://www.googletagmanager.com">
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18286755759"></script>
 <script>
+  // Consent Mode v2 — ต้องประกาศก่อนโหลด gtag เสมอ
+  // ค่าเริ่มต้นคือ "ปฏิเสธ" ทุกอย่าง จนกว่าผู้ใช้จะกดยอมรับที่แถบคุกกี้
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
+  var kiyConsent = null;
+  try { kiyConsent = localStorage.getItem('kiy-consent'); } catch(e) {}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'denied',
+    wait_for_update: 500
+  });
+  if (kiyConsent === 'granted') {
+    gtag('consent', 'update', {
+      ad_storage: 'granted',
+      ad_user_data: 'granted',
+      ad_personalization: 'granted',
+      analytics_storage: 'granted'
+    });
+  }
   gtag('js', new Date());
   gtag('config', 'AW-18286755759');
 </script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18286755759"></script>
 <title>ศูนย์ดูแลผู้สูงอายุ ลาดพร้าว กรุงเทพฯ | เก้าอี้โยก KAO I YOK</title>
 <meta name="description" content="ศูนย์ดูแลผู้สูงอายุเก้าอี้โยก ลาดพร้าว กรุงเทพฯ รับดูแลผู้สูงอายุระยะยาว รายวัน ผู้ป่วยพักฟื้น กายภาพบำบัด ผู้ป่วยติดเตียง ตลอด 24 ชม. เริ่มต้น 29,000 บาท/เดือน">
 
@@ -532,6 +551,41 @@
   .foot-bottom p{font-size:.85rem;color:var(--brown-pale)}
   .foot-bottom .slo{font-family:'Prompt',sans-serif;font-style:italic;font-size:.85rem;color:var(--green-pale)}
 
+  /* COOKIE CONSENT */
+  .cookie{
+    position:fixed;left:0;right:0;bottom:0;z-index:900;display:none;
+    padding:0 16px 16px;
+  }
+  .cookie.show{display:block}
+  .cookie-inner{
+    max-width:1000px;margin:0 auto;background:var(--white);border:1px solid var(--line);
+    border-radius:18px;box-shadow:var(--shadow);padding:20px 24px;
+    display:flex;align-items:center;gap:22px;flex-wrap:wrap;
+  }
+  .cookie-text{flex:1 1 340px;font-size:.93rem;color:var(--ink-soft);line-height:1.65}
+  .cookie-text strong{display:block;color:var(--brown-deep);font-weight:600;font-size:1rem;margin-bottom:4px}
+  .cookie-more{background:none;border:none;padding:0;margin-top:6px;cursor:pointer;font:inherit;font-size:.88rem;color:var(--green);text-decoration:underline;text-underline-offset:3px}
+  .cookie-detail{display:none;margin-top:10px;padding-top:10px;border-top:1px solid var(--line);font-size:.88rem}
+  .cookie-detail.show{display:block}
+  .cookie-detail ul{margin:6px 0 0 18px}
+  .cookie-detail li{margin-bottom:4px}
+  .cookie-btns{display:flex;gap:10px;flex-wrap:wrap}
+  .cookie-btns button{
+    font:inherit;font-size:.93rem;font-weight:500;padding:11px 24px;border-radius:40px;
+    cursor:pointer;transition:background .25s,transform .25s,color .25s;white-space:nowrap;
+  }
+  .btn-accept{background:var(--brown);color:var(--white);border:1.5px solid var(--brown)}
+  .btn-accept:hover{background:var(--brown-deep);border-color:var(--brown-deep);transform:translateY(-2px)}
+  .btn-decline{background:transparent;color:var(--brown-deep);border:1.5px solid var(--brown-pale)}
+  .btn-decline:hover{background:var(--cream-2);transform:translateY(-2px)}
+  .foot-bottom .cookie-settings{background:none;border:none;padding:0;cursor:pointer;font:inherit;font-size:.85rem;color:var(--brown-pale);text-decoration:underline;text-underline-offset:3px;transition:color .25s}
+  .foot-bottom .cookie-settings:hover{color:var(--cream)}
+  @media(max-width:640px){
+    .cookie-inner{padding:18px 20px;gap:16px}
+    .cookie-btns{width:100%}
+    .cookie-btns button{flex:1}
+  }
+
   /* LIGHTBOX */
   a[data-lb]{cursor:zoom-in}
   .lightbox{position:fixed;inset:0;z-index:1000;display:none;align-items:center;justify-content:center;padding:64px 24px;background:rgba(52,44,36,.94);backdrop-filter:blur(4px)}
@@ -889,10 +943,34 @@
     </div>
     <div class="foot-bottom">
       <p>© 2026 เก้าอี้โยก · KAO I YOK. สงวนลิขสิทธิ์</p>
+      <button type="button" class="cookie-settings" id="cookie-settings">ตั้งค่าคุกกี้</button>
       <p class="slo en">Every moment matters</p>
     </div>
   </div>
 </footer>
+
+<div class="cookie" id="cookie" role="region" aria-label="การตั้งค่าคุกกี้">
+  <div class="cookie-inner">
+    <div class="cookie-text">
+      <strong>เว็บไซต์นี้ใช้คุกกี้</strong>
+      เราใช้คุกกี้เพื่อวัดผลโฆษณาและปรับปรุงเว็บไซต์ คุณเลือกได้ว่าจะให้เก็บหรือไม่
+      โดยเว็บไซต์ยังใช้งานได้ตามปกติทั้งสองแบบ
+      <button type="button" class="cookie-more" id="cookie-more" aria-expanded="false" aria-controls="cookie-detail">ดูรายละเอียด</button>
+      <div class="cookie-detail" id="cookie-detail">
+        <ul>
+          <li><strong style="display:inline;font-size:inherit">คุกกี้ที่จำเป็น</strong> — ใช้จำการตั้งค่าคุกกี้ของคุณเท่านั้น เก็บไว้ในเครื่องคุณ ไม่ได้ส่งออกไปไหน</li>
+          <li><strong style="display:inline;font-size:inherit">คุกกี้เพื่อการตลาด (Google Ads)</strong> — ใช้ดูว่าคนที่กดโฆษณาเข้ามาแล้วติดต่อเราหรือไม่ ข้อมูลที่เก็บเป็นสถิติการใช้งานเว็บไซต์ ไม่มีชื่อ เบอร์โทร หรือข้อมูลสุขภาพของท่านหรือผู้สูงอายุในความดูแล</li>
+          <li>ถ้ากดปฏิเสธ เราจะไม่เก็บคุกกี้เพื่อการตลาด และคุณเปลี่ยนใจภายหลังได้ที่ปุ่ม “ตั้งค่าคุกกี้” ท้ายหน้า</li>
+          <li>สอบถามหรือใช้สิทธิ์เกี่ยวกับข้อมูลส่วนบุคคลได้ที่ <a href="tel:0995691442">099-569-1442</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="cookie-btns">
+      <button type="button" class="btn-decline" id="cookie-decline">ปฏิเสธ</button>
+      <button type="button" class="btn-accept" id="cookie-accept">ยอมรับทั้งหมด</button>
+    </div>
+  </div>
+</div>
 
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="ดูรูปขนาดใหญ่">
   <img id="lb-img" src="" alt="">
@@ -941,6 +1019,37 @@
     else if(e.key==='ArrowLeft')show(idx-1);
     else if(e.key==='ArrowRight')show(idx+1);
   });
+  // cookie consent — ค่าเริ่มต้นคือปฏิเสธ ตั้งไว้แล้วใน <head>
+  const cookieBar = document.getElementById('cookie');
+  const CONSENT_KEY = 'kiy-consent';
+  function readConsent(){ try { return localStorage.getItem(CONSENT_KEY); } catch(e){ return null; } }
+  function saveConsent(v){ try { localStorage.setItem(CONSENT_KEY, v); } catch(e){} }
+  function setConsent(v){
+    saveConsent(v);
+    if (typeof gtag === 'function' && v === 'granted') {
+      gtag('consent', 'update', {
+        ad_storage: 'granted',
+        ad_user_data: 'granted',
+        ad_personalization: 'granted',
+        analytics_storage: 'granted'
+      });
+    }
+    cookieBar.classList.remove('show');
+  }
+  if (!readConsent()) cookieBar.classList.add('show');
+  document.getElementById('cookie-accept').addEventListener('click', ()=>setConsent('granted'));
+  document.getElementById('cookie-decline').addEventListener('click', ()=>setConsent('denied'));
+  document.getElementById('cookie-more').addEventListener('click', e=>{
+    const d = document.getElementById('cookie-detail');
+    const open = d.classList.toggle('show');
+    e.target.setAttribute('aria-expanded', open);
+    e.target.textContent = open ? 'ซ่อนรายละเอียด' : 'ดูรายละเอียด';
+  });
+  document.getElementById('cookie-settings').addEventListener('click', ()=>{
+    cookieBar.classList.add('show');
+    cookieBar.scrollIntoView({block:'nearest'});
+  });
+
   // ── Google Ads conversion tracking ─────────────────────────────────
   // ⚠️ ต้องใส่ Conversion label จาก Google Ads ก่อน ระบบจึงจะเริ่มนับ
   //    หาได้ที่: Google Ads → Goals → Conversions → เลือก conversion action → "ติดแท็กเอง"
