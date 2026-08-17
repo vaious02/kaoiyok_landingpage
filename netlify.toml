@@ -18,6 +18,11 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
 # โดเมนหลักคือแบบไม่มี www ตาม canonical ใน index.html
 # ถ้ามีคนเข้าผ่าน www ให้เด้งมาที่โดเมนหลัก จะได้ไม่นับเป็นสองหน้าซ้ำกัน
 [[redirects]]
