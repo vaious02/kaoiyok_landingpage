@@ -949,11 +949,14 @@
   //    ถ้ามี conversion action เดียว วางค่าเดิมซ้ำได้ทุกช่อง
   //    ช่องที่เว้นว่าง = ไม่ส่ง conversion (ตัวเว็บทำงานปกติ)
   const ADS_ID = 'AW-18286755759';
+  // conversion action "Contact" — ทั้งสี่ช่องทางนับเข้า action เดียวกัน
+  // ถ้าอยากแยกรายงานว่าคนชอบโทรหรือชอบแอดไลน์ ให้สร้าง conversion action เพิ่มใน Google Ads
+  // แล้วเปลี่ยน label ของช่องนั้นเป็นของใหม่
   const ADS_LABELS = {
-    call:     '',   // กดเบอร์โทร
-    line:     '',   // กดแอดไลน์
-    facebook: '',   // กด Facebook
-    map:      ''    // กดดูแผนที่
+    call:     'N3ldCOGXgOMcEK__5o9E',   // กดเบอร์โทร
+    line:     'N3ldCOGXgOMcEK__5o9E',   // กดแอดไลน์
+    facebook: 'N3ldCOGXgOMcEK__5o9E',   // กด Facebook
+    map:      'N3ldCOGXgOMcEK__5o9E'    // กดดูแผนที่
   };
   const CONTACT_LINKS = {
     call:     'a[href^="tel:"]',
