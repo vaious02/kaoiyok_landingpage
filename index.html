@@ -939,10 +939,13 @@
     else if(e.key==='ArrowRight')show(idx+1);
   });
   // ── Google Ads conversion tracking ─────────────────────────────────
-  // วาง Conversion label จาก Google Ads ลงในเครื่องหมายคำพูด แล้วการกดปุ่มติดต่อจะถูกนับเป็น conversion
-  // หาได้ที่: Google Ads → Goals → Conversions → เลือก conversion action → "ติดแท็กเอง"
-  // ในโค้ดที่ Google ให้มาจะเป็น 'AW-18286755759/AbC-D_efGhIjKl' — เอาเฉพาะส่วนหลังเครื่องหมาย /
-  // ถ้ามี conversion action เดียว วาง label เดิมซ้ำได้ทุกช่อง
+  // ⚠️ ต้องใส่ Conversion label จาก Google Ads ก่อน ระบบจึงจะเริ่มนับ
+  //    หาได้ที่: Google Ads → Goals → Conversions → เลือก conversion action → "ติดแท็กเอง"
+  //    ในโค้ดที่ Google ให้มา จะมีบรรทัด  'send_to': 'AW-18286755759/AbC-D_efGhIjKl'
+  //    ก๊อปมาวางได้ทั้งเส้น หรือเอาแค่ส่วนหลังเครื่องหมาย / ก็ได้ ทั้งสองแบบใช้ได้
+  //    ถ้ามี conversion action เดียว วางค่าเดิมซ้ำได้ทุกช่อง
+  //    ช่องที่เว้นว่าง = ไม่ส่ง conversion (ตัวเว็บทำงานปกติ)
+  const ADS_ID = 'AW-18286755759';
   const ADS_LABELS = {
     call:     '',   // กดเบอร์โทร
     line:     '',   // กดแอดไลน์
@@ -955,11 +958,16 @@
     facebook: 'a[href*="facebook.com"]',
     map:      'a[href*="maps.app.goo.gl"]'
   };
+  const adsSendTo = v => {
+    v = (v || '').trim();
+    if(!v) return '';
+    return v.includes('/') ? v : ADS_ID + '/' + v;
+  };
   Object.entries(CONTACT_LINKS).forEach(([channel,sel])=>{
     document.querySelectorAll(sel).forEach(a=>a.addEventListener('click',()=>{
       if(typeof gtag!=='function')return;
-      const label=ADS_LABELS[channel];
-      if(label)gtag('event','conversion',{send_to:'AW-18286755759/'+label,event_label:channel});
+      const sendTarget=adsSendTo(ADS_LABELS[channel]);
+      if(sendTarget)gtag('event','conversion',{send_to:sendTarget,event_label:channel});
       gtag('event','contact_click',{channel:channel});
     }));
   });
