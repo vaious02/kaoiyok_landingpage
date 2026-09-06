@@ -647,6 +647,22 @@
     .event-cta .btn{width:100%;justify-content:center}
   }
 
+  .event-poster{margin-bottom:28px;position:relative;z-index:1}
+  .event-poster a{display:block;border-radius:18px;overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--line)}
+  .event-poster img{width:100%;height:auto;transition:transform .6s}
+  .event-poster a:hover img{transform:scale(1.02)}
+  @media(min-width:901px){
+    /* โปสเตอร์คู่กับหัวเรื่องและข้อมูลงาน ส่วนกิจกรรมย่อยลงมาเต็มความกว้าง */
+    .event-card.has-poster{display:grid;grid-template-columns:minmax(0,360px) minmax(0,1fr);column-gap:38px;align-items:start}
+    .event-card.has-poster .event-poster{grid-column:1;grid-row:1 / span 2;margin-bottom:0}
+    .event-card.has-poster .event-head{grid-column:2;grid-row:1}
+    .event-card.has-poster .event-facts{grid-column:2;grid-row:2;grid-template-columns:1fr;margin-bottom:0;align-self:start}
+    .event-card.has-poster .event-sessions,
+    .event-card.has-poster .event-quote,
+    .event-card.has-poster .event-cta{grid-column:1 / -1}
+    .event-card.has-poster .event-sessions{margin-top:34px}
+  }
+
   /* ANNOUNCEMENT POPUP */
   .popup{position:fixed;inset:0;z-index:1100;display:none;align-items:center;justify-content:center;padding:24px 16px;background:rgba(52,44,36,.72);backdrop-filter:blur(4px)}
   .popup.show{display:flex;animation:popup-fade .25s ease}
@@ -673,6 +689,16 @@
   .popup-list li::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--green-pale);margin-top:9px}
   .popup-list strong{color:var(--brown-deep);font-weight:600}
   .popup-note{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:12px 16px;font-size:.92rem;color:var(--brown-deep);margin-bottom:22px}
+  .popup-poster{display:block;margin:-6px -6px 20px;border-radius:16px;overflow:hidden;border:1px solid var(--line)}
+  .popup-poster img{width:100%;height:auto}
+  /* มีโปสเตอร์แล้วไม่ต้องเล่ารายละเอียดซ้ำ เหลือแค่หัวเรื่องกับปุ่ม */
+  .popup-card.has-poster .popup-tag,
+  .popup-card.has-poster .popup-when,
+  .popup-card.has-poster .popup-where,
+  .popup-card.has-poster .popup-list{display:none}
+  .popup-card.has-poster h2{font-size:1.25rem;margin-bottom:8px}
+  .popup-card.has-poster .popup-note{margin-bottom:18px}
+  .popup-card:not(.has-poster) .popup-poster{display:none}
   .popup-btns{display:flex;gap:12px;flex-wrap:wrap}
   .popup-btns .btn{padding:12px 24px;font-size:.95rem}
   @media(max-width:560px){
@@ -840,6 +866,12 @@
     </div>
 
     <article class="event-card reveal">
+      <figure class="event-poster" id="event-poster">
+        <a href="/images/event-knee-herbal.webp" target="_blank" rel="noopener">
+          <img src="/images/event-knee-herbal.webp" alt="โปสเตอร์กิจกรรม เข่าดี ชีวิตดี ด้วยวิถีสมุนไพรไทย วันเสาร์ที่ 19 กันยายน 2026 เวลา 10:00 - 12:30 น. เข้าร่วมฟรี" width="1040" height="1040">
+        </a>
+      </figure>
+
       <div class="event-head">
         <span class="event-tag" id="event-countdown">เชิญร่วมกิจกรรม</span>
         <h2>เข่าดี ชีวิตดี ด้วยวิถีสมุนไพรไทย</h2>
@@ -1172,6 +1204,9 @@
     <button type="button" class="popup-close" id="popup-close" aria-label="ปิดประกาศ">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
     </button>
+    <a class="popup-poster" id="popup-poster-link" href="/images/event-knee-herbal.webp" target="_blank" rel="noopener">
+      <img id="popup-poster" src="/images/event-knee-herbal.webp" alt="โปสเตอร์กิจกรรม เข่าดี ชีวิตดี ด้วยวิถีสมุนไพรไทย วันเสาร์ที่ 19 กันยายน 2026 เวลา 10:00 - 12:30 น. ที่ศูนย์ดูแลผู้สูงอายุเก้าอี้โยก เข้าร่วมฟรี" width="1040" height="1040">
+    </a>
     <span class="popup-tag">เชิญร่วมกิจกรรม · ฟรี</span>
     <h2 id="popup-title">เข่าดี ชีวิตดี ด้วยวิถีสมุนไพรไทย</h2>
     <p class="popup-when">วันเสาร์ที่ 19 กันยายน 2026 · 10:00 – 12:30 น.</p>
@@ -1292,6 +1327,44 @@
     else if (left === 1) countdown.textContent = 'เชิญร่วมกิจกรรม · พรุ่งนี้';
     else if (left === 0) countdown.textContent = 'เชิญร่วมกิจกรรม · วันนี้';
     else { countdown.textContent = 'กิจกรรมที่ผ่านมา'; countdown.classList.add('is-past'); }
+  }
+
+  // โปสเตอร์กิจกรรม — ลองหลายนามสกุลเผื่ออัปโหลดมาเป็นไฟล์คนละแบบ
+  // ยังไม่ได้อัปโหลด: ซ่อนรูปทิ้ง แล้วแสดงเนื้อหาแบบข้อความแทน (เว็บไม่พัง)
+  const POSTER_SRCS = [
+    '/images/event-knee-herbal.webp',
+    '/images/event-knee-herbal.jpg',
+    '/images/event-knee-herbal.png'
+  ];
+  function resolvePoster(img, onFound, onMissing){
+    let i = 0, settled = false;
+    const found = () => { if (!settled) { settled = true; onFound(img.currentSrc || img.src); } };
+    const tryNext = () => {
+      if (settled) return;
+      i++;
+      if (i < POSTER_SRCS.length) { img.src = POSTER_SRCS[i]; return; }
+      settled = true;
+      onMissing();
+    };
+    img.addEventListener('error', tryNext);
+    img.addEventListener('load', found);
+    // สคริปต์อยู่ท้ายหน้า รูปจึงอาจโหลดจบ (หรือ 404) ไปก่อนที่จะผูก listener ได้
+    if (img.complete) { img.naturalWidth > 0 ? found() : tryNext(); }
+  }
+
+  const eventPoster = document.getElementById('event-poster');
+  if (eventPoster) {
+    const img = eventPoster.querySelector('img');
+    resolvePoster(img,
+      src => { eventPoster.querySelector('a').href = src; eventPoster.closest('.event-card').classList.add('has-poster'); },
+      () => eventPoster.remove());
+  }
+
+  const popupPoster = document.getElementById('popup-poster');
+  if (popupPoster) {
+    resolvePoster(popupPoster,
+      src => { document.getElementById('popup-poster-link').href = src; popupPoster.closest('.popup-card').classList.add('has-poster'); },
+      () => document.getElementById('popup-poster-link').remove());
   }
 
   function seenPopup(){ try { return localStorage.getItem(POPUP_KEY) === POPUP_ID; } catch(e){ return false; } }
