@@ -323,6 +323,49 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "name": "เข่าดี ชีวิตดี ด้วยวิถีสมุนไพรไทย",
+  "description": "กิจกรรมดูแลข้อเข่าสำหรับผู้สูงอายุ ประกอบด้วยกายภาพบำบัดข้อเข่าเสื่อมและสมุนไพรบำบัด (ชาข้าวเปลือก แช่เท้าน้ำสมุนไพร พอกเข่า และพอกตา) เข้าร่วมฟรี ไม่มีค่าใช้จ่าย รับจำนวนจำกัด",
+  "startDate": "2026-09-19T10:00:00+07:00",
+  "endDate": "2026-09-19T12:30:00+07:00",
+  "eventStatus": "https://schema.org/EventScheduled",
+  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+  "isAccessibleForFree": true,
+  "url": "https://kaoiyok-elderlycare.com/#news",
+  "location": {
+    "@type": "Place",
+    "name": "ศูนย์ดูแลผู้สูงอายุและผู้มีสภาวะพึ่งพิงเก้าอี้โยก",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "59/124 ถนนประเสริฐมนูกิจ แขวงจรเข้บัว",
+      "addressLocality": "เขตลาดพร้าว",
+      "addressRegion": "กรุงเทพมหานคร",
+      "postalCode": "10230",
+      "addressCountry": "TH"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 13.8377388,
+      "longitude": 100.6139405
+    }
+  },
+  "organizer": {
+    "@id": "https://kaoiyok-elderlycare.com/#business"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "THB",
+    "availability": "https://schema.org/LimitedAvailability",
+    "url": "https://forms.gle/Dbi1Lj7YWwzyRQRd6",
+    "validFrom": "2026-09-01T00:00:00+07:00"
+  }
+}
+</script>
+
 <style>
   :root{
     --brown-deep:#6b5644;
@@ -551,6 +594,92 @@
   .foot-bottom p{font-size:.85rem;color:var(--brown-pale)}
   .foot-bottom .slo{font-family:'Prompt',sans-serif;font-style:italic;font-size:.85rem;color:var(--green-pale)}
 
+  /* NEWS & EVENTS */
+  .news{background:var(--white)}
+  .event-card{
+    background:var(--cream);border:1px solid var(--line);border-radius:var(--radius);
+    padding:44px 44px 40px;box-shadow:var(--shadow);position:relative;overflow:hidden;
+  }
+  .event-card::before{content:"";position:absolute;top:0;left:0;width:100%;height:5px;background:linear-gradient(90deg,var(--green-soft),var(--brown-soft))}
+  .event-card::after{content:"";position:absolute;top:-90px;right:-90px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(195,205,180,.35),transparent 70%);pointer-events:none}
+  .event-head{position:relative;z-index:1;margin-bottom:26px}
+  .event-tag{
+    display:inline-flex;align-items:center;gap:9px;background:var(--green);color:var(--white);
+    font-family:'Prompt',sans-serif;font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;
+    padding:7px 18px;border-radius:40px;margin-bottom:16px;
+  }
+  .event-tag.is-past{background:var(--brown-soft)}
+  .event-head h2{font-size:clamp(1.6rem,3.4vw,2.35rem);margin-bottom:12px}
+  .event-lead{color:var(--ink-soft);font-size:1.05rem;max-width:56ch}
+  .event-lead strong{color:var(--brown-deep);font-weight:600}
+  .event-facts{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 26px;margin-bottom:32px;position:relative;z-index:1}
+  .event-facts li{display:flex;gap:12px;align-items:flex-start;font-size:1rem;color:var(--brown-deep)}
+  .event-facts svg{width:21px;height:21px;color:var(--green);flex-shrink:0;margin-top:3px}
+  .event-facts .ef-note{color:var(--ink-soft);font-size:.9rem;display:block}
+  .event-sessions{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-bottom:28px;position:relative;z-index:1}
+  .event-session{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:28px 26px}
+  .es-no{
+    display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:12px;
+    background:var(--cream-2);color:var(--green);font-family:'Prompt',sans-serif;font-weight:600;margin-bottom:14px;
+  }
+  .event-session h3{font-size:1.18rem;margin-bottom:6px}
+  .es-time{display:block;font-family:'Prompt',sans-serif;font-size:.9rem;color:var(--green);margin-bottom:12px;letter-spacing:.03em}
+  .event-session p{font-size:.96rem;color:var(--ink-soft);margin-bottom:14px}
+  .es-points{list-style:none;display:flex;flex-wrap:wrap;gap:8px}
+  .es-points li{background:var(--cream);border:1px solid var(--line);border-radius:30px;padding:5px 15px;font-size:.88rem;color:var(--brown-deep)}
+  .es-steps{list-style:none;counter-reset:step;display:flex;flex-direction:column;gap:12px}
+  .es-steps li{counter-increment:step;display:grid;grid-template-columns:26px 1fr;gap:11px;align-items:start}
+  .es-steps li::before{
+    content:counter(step);display:flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;
+    background:var(--green-pale);color:var(--brown-deep);font-family:'Prompt',sans-serif;font-size:.82rem;font-weight:600;
+  }
+  .es-steps strong{display:block;font-weight:600;color:var(--brown-deep);font-size:.98rem}
+  .es-steps span{display:block;font-size:.9rem;color:var(--ink-soft);line-height:1.6}
+  .event-quote{text-align:center;font-size:1.1rem;color:var(--green);font-weight:500;margin-bottom:26px;position:relative;z-index:1}
+  .event-cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center;position:relative;z-index:1}
+  .event-cta .btn{font-size:.98rem}
+  .event-cta .cta-hint{font-size:.9rem;color:var(--ink-soft)}
+  @media(max-width:900px){
+    .event-card{padding:34px 26px 32px}
+    .event-facts,.event-sessions{grid-template-columns:1fr}
+  }
+  @media(max-width:560px){
+    .event-cta .btn{width:100%;justify-content:center}
+  }
+
+  /* ANNOUNCEMENT POPUP */
+  .popup{position:fixed;inset:0;z-index:1100;display:none;align-items:center;justify-content:center;padding:24px 16px;background:rgba(52,44,36,.72);backdrop-filter:blur(4px)}
+  .popup.show{display:flex;animation:popup-fade .25s ease}
+  .popup-card{
+    position:relative;width:min(520px,100%);max-height:88vh;overflow-y:auto;background:var(--cream);
+    border-radius:var(--radius);box-shadow:0 30px 90px -30px rgba(0,0,0,.6);padding:40px 38px 34px;
+    animation:popup-rise .3s ease;
+  }
+  @keyframes popup-fade{from{opacity:0}to{opacity:1}}
+  @keyframes popup-rise{from{opacity:0;transform:translateY(16px) scale(.98)}to{opacity:1;transform:none}}
+  .popup-card::before{content:"";position:absolute;top:0;left:0;width:100%;height:5px;border-radius:var(--radius) var(--radius) 0 0;background:linear-gradient(90deg,var(--green-soft),var(--brown-soft))}
+  .popup-close{
+    position:absolute;top:14px;right:14px;width:38px;height:38px;border-radius:50%;border:1px solid var(--line);
+    background:var(--white);color:var(--brown-deep);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .25s;
+  }
+  .popup-close:hover{background:var(--cream-2)}
+  .popup-close svg{width:18px;height:18px}
+  .popup-tag{display:inline-block;background:var(--green);color:var(--white);font-family:'Prompt',sans-serif;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;padding:6px 16px;border-radius:40px;margin-bottom:14px}
+  .popup-card h2{font-size:clamp(1.4rem,4vw,1.85rem);margin-bottom:10px}
+  .popup-when{font-size:1rem;color:var(--brown-deep);font-weight:500;margin-bottom:4px}
+  .popup-where{font-size:.92rem;color:var(--ink-soft);margin-bottom:18px}
+  .popup-list{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:18px}
+  .popup-list li{display:grid;grid-template-columns:20px 1fr;gap:10px;font-size:.96rem;color:var(--ink-soft)}
+  .popup-list li::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--green-pale);margin-top:9px}
+  .popup-list strong{color:var(--brown-deep);font-weight:600}
+  .popup-note{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:12px 16px;font-size:.92rem;color:var(--brown-deep);margin-bottom:22px}
+  .popup-btns{display:flex;gap:12px;flex-wrap:wrap}
+  .popup-btns .btn{padding:12px 24px;font-size:.95rem}
+  @media(max-width:560px){
+    .popup-card{padding:34px 24px 28px}
+    .popup-btns .btn{width:100%;justify-content:center}
+  }
+
   /* COOKIE CONSENT */
   .cookie{
     position:fixed;left:0;right:0;bottom:0;z-index:900;display:none;
@@ -645,6 +774,7 @@
     </a>
     <nav>
       <ul>
+        <li><a href="#news">ข่าวสาร</a></li>
         <li><a href="#about">เกี่ยวกับเรา</a></li>
         <li><a href="#services">บริการ</a></li>
         <li><a href="#pricing">ค่าบริการ</a></li>
@@ -657,6 +787,7 @@
     <button class="burger" aria-label="เมนู"><span></span><span></span><span></span></button>
   </div>
   <div class="mobile-menu">
+    <a href="#news">ข่าวสารและกิจกรรม</a>
     <a href="#about">เกี่ยวกับเรา</a>
     <a href="#services">บริการ</a>
     <a href="#pricing">ค่าบริการ</a>
@@ -698,6 +829,68 @@
     <p class="quote-en en">Every moment matters</p>
   </div>
 </div>
+
+<!-- NEWS & EVENTS -->
+<section class="news" id="news" data-event-date="2026-09-19">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-tag">ข่าวสารและกิจกรรม</span>
+      <h2>กิจกรรมที่กำลังจะถึง</h2>
+      <p>เก้าอี้โยกจัดกิจกรรมดูแลสุขภาพผู้สูงอายุอย่างต่อเนื่อง เปิดให้ครอบครัวและผู้สนใจเข้าร่วมได้ ไม่จำเป็นต้องเป็นสมาชิกของศูนย์</p>
+    </div>
+
+    <article class="event-card reveal">
+      <div class="event-head">
+        <span class="event-tag" id="event-countdown">เชิญร่วมกิจกรรม</span>
+        <h2>เข่าดี ชีวิตดี ด้วยวิถีสมุนไพรไทย</h2>
+        <p class="event-lead">ชวนคุณพ่อคุณแม่และลูกหลาน มาร่วมกิจกรรมดูแลข้อเข่า <strong>ฟรี! ไม่มีค่าใช้จ่าย</strong> ทั้งกายภาพบำบัดข้อเข่าเสื่อมและสมุนไพรบำบัดตามตำรับแผนไทย</p>
+      </div>
+
+      <ul class="event-facts">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18"/></svg><span><strong>วันเสาร์ที่ 19 กันยายน 2026</strong><span class="ef-note">เวลา 10:00 – 12:30 น.</span></span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span><strong>ณ ศูนย์ดูแลผู้สูงอายุและผู้มีสภาวะพึ่งพิงเก้าอี้โยก</strong><span class="ef-note">ถนนประเสริฐมนูกิจ เขตลาดพร้าว กรุงเทพฯ</span></span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20.6 13.4 12 22l-9-9V3h10l7.6 7.6a2 2 0 010 2.8z"/><circle cx="7.5" cy="7.5" r="1.3"/></svg><span><strong>เข้าร่วมฟรี ไม่มีค่าใช้จ่าย</strong><span class="ef-note">เปิดรับทั้งผู้สูงอายุและลูกหลานที่ดูแล</span></span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M17 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9.5" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.9"/></svg><span><strong>รับจำนวนจำกัด</strong><span class="ef-note">สำรองที่นั่งล่วงหน้าก่อนวันงาน</span></span></li>
+      </ul>
+
+      <div class="event-sessions">
+        <div class="event-session">
+          <span class="es-no en">01</span>
+          <h3>กายภาพบำบัดข้อเข่าเสื่อม</h3>
+          <span class="es-time en">10:00 – 11:00 น.</span>
+          <p>เรียนรู้ท่ากายภาพฟื้นฟูข้อเข่าจากนักกายภาพ ทำตามได้จริง กลับไปทำต่อเองที่บ้านได้</p>
+          <ul class="es-points">
+            <li>ลดปวด</li>
+            <li>เพิ่มความยืดหยุ่น</li>
+            <li>เสริมสร้างกล้ามเนื้อรอบเข่า</li>
+            <li>ลดความเสี่ยงการล้ม</li>
+          </ul>
+        </div>
+        <div class="event-session">
+          <span class="es-no en">02</span>
+          <h3>สมุนไพรบำบัด</h3>
+          <span class="es-time en">11:00 – 12:30 น.</span>
+          <ol class="es-steps">
+            <li><span><strong>Welcome drink ชาข้าวเปลือก</strong><span>เครื่องดื่มที่มีสาร GABA ดื่มอุ่น ๆ สบายท้อง ผ่อนคลาย</span></span></li>
+            <li><span><strong>แช่เท้าน้ำสมุนไพร</strong><span>คลายกล้ามเนื้อ ลดอาการปวดเมื่อย</span></span></li>
+            <li><span><strong>พอกเข่าด้วยสมุนไพร</strong><span>ตำรับแผนไทย ช่วยให้รู้สึกสบายเข่า บรรเทาอาการปวด</span></span></li>
+            <li><span><strong>พอกตา / สปาตา</strong><span>ลดความเมื่อยล้าจากการใช้สายตานาน ๆ ผ่อนคลายรอบดวงตา</span></span></li>
+          </ol>
+        </div>
+      </div>
+
+      <p class="event-quote">ดูแลข้อเข่า… ดูแลคุณภาพชีวิต</p>
+
+      <div class="event-cta">
+        <a class="btn btn-primary" href="https://forms.gle/Dbi1Lj7YWwzyRQRd6" target="_blank" rel="noopener">ลงทะเบียนเข้าร่วม (ฟรี)
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="btn btn-ghost" href="https://lin.ee/oNKrIJB" target="_blank" rel="noopener">ลงทะเบียนผ่าน LINE</a>
+        <span class="cta-hint">หรือโทร <a href="tel:0995691442">099-569-1442</a> (08:00–17:00 น.)</span>
+      </div>
+    </article>
+  </div>
+</section>
 
 <!-- ABOUT -->
 <section class="about" id="about">
@@ -927,6 +1120,7 @@
       </div>
       <div class="foot-col">
         <h4>เมนู</h4>
+        <a href="#news">ข่าวสารและกิจกรรม</a>
         <a href="#about">เกี่ยวกับเรา</a>
         <a href="#services">บริการ</a>
         <a href="#pricing">ค่าบริการ</a>
@@ -968,6 +1162,28 @@
     <div class="cookie-btns">
       <button type="button" class="btn-decline" id="cookie-decline">ปฏิเสธ</button>
       <button type="button" class="btn-accept" id="cookie-accept">ยอมรับทั้งหมด</button>
+    </div>
+  </div>
+</div>
+
+<!-- ANNOUNCEMENT POPUP — เด้งครั้งแรกที่เข้าเว็บ -->
+<div class="popup" id="popup" role="dialog" aria-modal="true" aria-labelledby="popup-title">
+  <div class="popup-card">
+    <button type="button" class="popup-close" id="popup-close" aria-label="ปิดประกาศ">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+    <span class="popup-tag">เชิญร่วมกิจกรรม · ฟรี</span>
+    <h2 id="popup-title">เข่าดี ชีวิตดี ด้วยวิถีสมุนไพรไทย</h2>
+    <p class="popup-when">วันเสาร์ที่ 19 กันยายน 2026 · 10:00 – 12:30 น.</p>
+    <p class="popup-where">ณ ศูนย์ดูแลผู้สูงอายุและผู้มีสภาวะพึ่งพิงเก้าอี้โยก</p>
+    <ul class="popup-list">
+      <li><span><strong>กายภาพบำบัดข้อเข่าเสื่อม</strong> 10:00 – 11:00 น. — ท่าฟื้นฟูข้อเข่าจากนักกายภาพ ทำต่อเองที่บ้านได้</span></li>
+      <li><span><strong>สมุนไพรบำบัด</strong> 11:00 – 12:30 น. — ชาข้าวเปลือก แช่เท้า พอกเข่า และพอกตา</span></li>
+    </ul>
+    <p class="popup-note">📌 รับจำนวนจำกัด สำรองที่นั่งล่วงหน้า · เข้าร่วมฟรี ไม่มีค่าใช้จ่าย</p>
+    <div class="popup-btns">
+      <a class="btn btn-primary" href="https://forms.gle/Dbi1Lj7YWwzyRQRd6" target="_blank" rel="noopener" id="popup-register">ลงทะเบียนฟรี</a>
+      <a class="btn btn-ghost" href="#news" id="popup-more">ดูรายละเอียด</a>
     </div>
   </div>
 </div>
@@ -1050,6 +1266,74 @@
     cookieBar.scrollIntoView({block:'nearest'});
   });
 
+  // ── ประกาศกิจกรรม: ป้ายนับถอยหลัง + ป๊อปอัปครั้งแรกที่เข้าเว็บ ──────
+  // เปลี่ยนกิจกรรมใหม่: แก้ data-event-date ที่ <section id="news">,
+  // เนื้อหาในกล่อง #popup แล้วเปลี่ยน POPUP_ID เป็นค่าใหม่ (คนที่เคยปิดจะเห็นอีกครั้ง)
+  const POPUP_ID = 'knee-herbal-2026-09-19';
+  const POPUP_KEY = 'kiy-announcement-seen';
+  const newsSection = document.getElementById('news');
+  const popup = document.getElementById('popup');
+
+  function daysUntil(iso){
+    const [y,m,d] = iso.split('-').map(Number);
+    const target = new Date(y, m-1, d);
+    const now = new Date();
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    return Math.round((target - today) / 86400000);
+  }
+
+  const eventDate = newsSection ? newsSection.dataset.eventDate : null;
+  const left = eventDate ? daysUntil(eventDate) : null;
+
+  // ป้ายบนการ์ดกิจกรรม บอกว่าเหลืออีกกี่วัน
+  const countdown = document.getElementById('event-countdown');
+  if (countdown && left !== null) {
+    if (left > 1) countdown.textContent = 'เชิญร่วมกิจกรรม · อีก ' + left + ' วัน';
+    else if (left === 1) countdown.textContent = 'เชิญร่วมกิจกรรม · พรุ่งนี้';
+    else if (left === 0) countdown.textContent = 'เชิญร่วมกิจกรรม · วันนี้';
+    else { countdown.textContent = 'กิจกรรมที่ผ่านมา'; countdown.classList.add('is-past'); }
+  }
+
+  function seenPopup(){ try { return localStorage.getItem(POPUP_KEY) === POPUP_ID; } catch(e){ return false; } }
+  function markPopupSeen(){ try { localStorage.setItem(POPUP_KEY, POPUP_ID); } catch(e){} }
+
+  function closePopup(){
+    markPopupSeen();
+    popup.classList.remove('show');
+    document.body.style.overflow = '';
+  }
+
+  function openPopup(){
+    popup.classList.add('show');
+    document.body.style.overflow = 'hidden';
+    if (typeof gtag === 'function') gtag('event', 'announcement_view', { announcement: POPUP_ID });
+  }
+
+  function maybeShowPopup(){
+    if (!popup || seenPopup()) return;
+    if (left !== null && left < 0) return;   // กิจกรรมผ่านไปแล้ว ไม่ต้องเด้ง
+    setTimeout(openPopup, 700);
+  }
+
+  if (popup) {
+    document.getElementById('popup-close').addEventListener('click', closePopup);
+    document.getElementById('popup-more').addEventListener('click', closePopup);
+    document.getElementById('popup-register').addEventListener('click', closePopup);
+    popup.addEventListener('click', e => { if (e.target === popup) closePopup(); });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && popup.classList.contains('show')) closePopup();
+    });
+
+    // ถ้าแถบคุกกี้ยังค้างอยู่ รอให้ผู้ใช้เลือกก่อน จะได้ไม่ซ้อนกันสองชั้น
+    if (cookieBar.classList.contains('show')) {
+      ['cookie-accept','cookie-decline'].forEach(id =>
+        document.getElementById(id).addEventListener('click', () => setTimeout(maybeShowPopup, 400), { once:true })
+      );
+    } else {
+      maybeShowPopup();
+    }
+  }
+
   // ── Google Ads conversion tracking ─────────────────────────────────
   // ⚠️ ต้องใส่ Conversion label จาก Google Ads ก่อน ระบบจึงจะเริ่มนับ
   //    หาได้ที่: Google Ads → Goals → Conversions → เลือก conversion action → "ติดแท็กเอง"
@@ -1062,12 +1346,14 @@
   // ถ้าอยากแยกรายงานว่าคนชอบโทรหรือชอบแอดไลน์ ให้สร้าง conversion action เพิ่มใน Google Ads
   // แล้วเปลี่ยน label ของช่องนั้นเป็นของใหม่
   const ADS_LABELS = {
+    register: '',                       // กดปุ่มลงทะเบียนกิจกรรม (ใส่ label เองถ้าจะนับเป็น conversion)
     call:     'N3ldCOGXgOMcEK__5o9E',   // กดเบอร์โทร
     line:     'N3ldCOGXgOMcEK__5o9E',   // กดแอดไลน์
     facebook: 'N3ldCOGXgOMcEK__5o9E',   // กด Facebook
     map:      'N3ldCOGXgOMcEK__5o9E'    // กดดูแผนที่
   };
   const CONTACT_LINKS = {
+    register: 'a[href*="forms.gle"]',
     call:     'a[href^="tel:"]',
     line:     'a[href*="lin.ee"]',
     facebook: 'a[href*="facebook.com"]',
