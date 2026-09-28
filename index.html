@@ -663,49 +663,6 @@
     .event-card.has-poster .event-sessions{margin-top:34px}
   }
 
-  /* ANNOUNCEMENT POPUP */
-  .popup{position:fixed;inset:0;z-index:1100;display:none;align-items:center;justify-content:center;padding:24px 16px;background:rgba(52,44,36,.72);backdrop-filter:blur(4px)}
-  .popup.show{display:flex;animation:popup-fade .25s ease}
-  .popup-card{
-    position:relative;width:min(520px,100%);max-height:88vh;overflow-y:auto;background:var(--cream);
-    border-radius:var(--radius);box-shadow:0 30px 90px -30px rgba(0,0,0,.6);padding:40px 38px 34px;
-    animation:popup-rise .3s ease;
-  }
-  @keyframes popup-fade{from{opacity:0}to{opacity:1}}
-  @keyframes popup-rise{from{opacity:0;transform:translateY(16px) scale(.98)}to{opacity:1;transform:none}}
-  .popup-card::before{content:"";position:absolute;top:0;left:0;width:100%;height:5px;border-radius:var(--radius) var(--radius) 0 0;background:linear-gradient(90deg,var(--green-soft),var(--brown-soft))}
-  .popup-close{
-    position:absolute;top:14px;right:14px;width:38px;height:38px;border-radius:50%;border:1px solid var(--line);
-    background:var(--white);color:var(--brown-deep);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .25s;
-  }
-  .popup-close:hover{background:var(--cream-2)}
-  .popup-close svg{width:18px;height:18px}
-  .popup-tag{display:inline-block;background:var(--green);color:var(--white);font-family:'Prompt',sans-serif;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;padding:6px 16px;border-radius:40px;margin-bottom:14px}
-  .popup-card h2{font-size:clamp(1.4rem,4vw,1.85rem);margin-bottom:10px}
-  .popup-when{font-size:1rem;color:var(--brown-deep);font-weight:500;margin-bottom:4px}
-  .popup-where{font-size:.92rem;color:var(--ink-soft);margin-bottom:18px}
-  .popup-list{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:18px}
-  .popup-list li{display:grid;grid-template-columns:20px 1fr;gap:10px;font-size:.96rem;color:var(--ink-soft)}
-  .popup-list li::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--green-pale);margin-top:9px}
-  .popup-list strong{color:var(--brown-deep);font-weight:600}
-  .popup-note{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:12px 16px;font-size:.92rem;color:var(--brown-deep);margin-bottom:22px}
-  .popup-poster{display:block;margin:-6px -6px 20px;border-radius:16px;overflow:hidden;border:1px solid var(--line)}
-  .popup-poster img{width:100%;height:auto}
-  /* มีโปสเตอร์แล้วไม่ต้องเล่ารายละเอียดซ้ำ เหลือแค่หัวเรื่องกับปุ่ม */
-  .popup-card.has-poster .popup-tag,
-  .popup-card.has-poster .popup-when,
-  .popup-card.has-poster .popup-where,
-  .popup-card.has-poster .popup-list{display:none}
-  .popup-card.has-poster h2{font-size:1.25rem;margin-bottom:8px}
-  .popup-card.has-poster .popup-note{margin-bottom:18px}
-  .popup-card:not(.has-poster) .popup-poster{display:none}
-  .popup-btns{display:flex;gap:12px;flex-wrap:wrap}
-  .popup-btns .btn{padding:12px 24px;font-size:.95rem}
-  @media(max-width:560px){
-    .popup-card{padding:34px 24px 28px}
-    .popup-btns .btn{width:100%;justify-content:center}
-  }
-
   /* COOKIE CONSENT */
   .cookie{
     position:fixed;left:0;right:0;bottom:0;z-index:900;display:none;
@@ -1198,31 +1155,6 @@
   </div>
 </div>
 
-<!-- ANNOUNCEMENT POPUP — เด้งครั้งแรกที่เข้าเว็บ -->
-<div class="popup" id="popup" role="dialog" aria-modal="true" aria-labelledby="popup-title">
-  <div class="popup-card">
-    <button type="button" class="popup-close" id="popup-close" aria-label="ปิดประกาศ">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
-    </button>
-    <a class="popup-poster" id="popup-poster-link" href="/images/event-knee-herbal.webp" target="_blank" rel="noopener">
-      <img id="popup-poster" src="/images/event-knee-herbal.webp" alt="โปสเตอร์กิจกรรม เข่าดี ชีวิตดี ด้วยวิถีสมุนไพรไทย วันเสาร์ที่ 19 กันยายน 2026 เวลา 10:00 - 12:30 น. ที่ศูนย์ดูแลผู้สูงอายุเก้าอี้โยก เข้าร่วมฟรี" width="1040" height="1040">
-    </a>
-    <span class="popup-tag">เชิญร่วมกิจกรรม · ฟรี</span>
-    <h2 id="popup-title">เข่าดี ชีวิตดี ด้วยวิถีสมุนไพรไทย</h2>
-    <p class="popup-when">วันเสาร์ที่ 19 กันยายน 2026 · 10:00 – 12:30 น.</p>
-    <p class="popup-where">ณ ศูนย์ดูแลผู้สูงอายุและผู้มีสภาวะพึ่งพิงเก้าอี้โยก</p>
-    <ul class="popup-list">
-      <li><span><strong>กายภาพบำบัดข้อเข่าเสื่อม</strong> 10:00 – 11:00 น. — ท่าฟื้นฟูข้อเข่าจากนักกายภาพ ทำต่อเองที่บ้านได้</span></li>
-      <li><span><strong>สมุนไพรบำบัด</strong> 11:00 – 12:30 น. — ชาข้าวเปลือก แช่เท้า พอกเข่า และพอกตา</span></li>
-    </ul>
-    <p class="popup-note">📌 รับจำนวนจำกัด สำรองที่นั่งล่วงหน้า · เข้าร่วมฟรี ไม่มีค่าใช้จ่าย</p>
-    <div class="popup-btns">
-      <a class="btn btn-primary" href="https://forms.gle/Dbi1Lj7YWwzyRQRd6" target="_blank" rel="noopener" id="popup-register">ลงทะเบียนฟรี</a>
-      <a class="btn btn-ghost" href="#news" id="popup-more">ดูรายละเอียด</a>
-    </div>
-  </div>
-</div>
-
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="ดูรูปขนาดใหญ่">
   <img id="lb-img" src="" alt="">
   <button type="button" class="lb-btn lb-close" aria-label="ปิด"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
@@ -1301,13 +1233,9 @@
     cookieBar.scrollIntoView({block:'nearest'});
   });
 
-  // ── ประกาศกิจกรรม: ป้ายนับถอยหลัง + ป๊อปอัปครั้งแรกที่เข้าเว็บ ──────
-  // เปลี่ยนกิจกรรมใหม่: แก้ data-event-date ที่ <section id="news">,
-  // เนื้อหาในกล่อง #popup แล้วเปลี่ยน POPUP_ID เป็นค่าใหม่ (คนที่เคยปิดจะเห็นอีกครั้ง)
-  const POPUP_ID = 'knee-herbal-2026-09-19';
-  const POPUP_KEY = 'kiy-announcement-seen';
+  // ── ประกาศกิจกรรม: ป้ายนับถอยหลัง ──────────────────────────────
+  // เปลี่ยนกิจกรรมใหม่: แก้ data-event-date ที่ <section id="news">
   const newsSection = document.getElementById('news');
-  const popup = document.getElementById('popup');
 
   function daysUntil(iso){
     const [y,m,d] = iso.split('-').map(Number);
@@ -1358,53 +1286,6 @@
     resolvePoster(img,
       src => { eventPoster.querySelector('a').href = src; eventPoster.closest('.event-card').classList.add('has-poster'); },
       () => eventPoster.remove());
-  }
-
-  const popupPoster = document.getElementById('popup-poster');
-  if (popupPoster) {
-    resolvePoster(popupPoster,
-      src => { document.getElementById('popup-poster-link').href = src; popupPoster.closest('.popup-card').classList.add('has-poster'); },
-      () => document.getElementById('popup-poster-link').remove());
-  }
-
-  function seenPopup(){ try { return localStorage.getItem(POPUP_KEY) === POPUP_ID; } catch(e){ return false; } }
-  function markPopupSeen(){ try { localStorage.setItem(POPUP_KEY, POPUP_ID); } catch(e){} }
-
-  function closePopup(){
-    markPopupSeen();
-    popup.classList.remove('show');
-    document.body.style.overflow = '';
-  }
-
-  function openPopup(){
-    popup.classList.add('show');
-    document.body.style.overflow = 'hidden';
-    if (typeof gtag === 'function') gtag('event', 'announcement_view', { announcement: POPUP_ID });
-  }
-
-  function maybeShowPopup(){
-    if (!popup || seenPopup()) return;
-    if (left !== null && left < 0) return;   // กิจกรรมผ่านไปแล้ว ไม่ต้องเด้ง
-    setTimeout(openPopup, 700);
-  }
-
-  if (popup) {
-    document.getElementById('popup-close').addEventListener('click', closePopup);
-    document.getElementById('popup-more').addEventListener('click', closePopup);
-    document.getElementById('popup-register').addEventListener('click', closePopup);
-    popup.addEventListener('click', e => { if (e.target === popup) closePopup(); });
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape' && popup.classList.contains('show')) closePopup();
-    });
-
-    // ถ้าแถบคุกกี้ยังค้างอยู่ รอให้ผู้ใช้เลือกก่อน จะได้ไม่ซ้อนกันสองชั้น
-    if (cookieBar.classList.contains('show')) {
-      ['cookie-accept','cookie-decline'].forEach(id =>
-        document.getElementById(id).addEventListener('click', () => setTimeout(maybeShowPopup, 400), { once:true })
-      );
-    } else {
-      maybeShowPopup();
-    }
   }
 
   // ── Google Ads conversion tracking ─────────────────────────────────
