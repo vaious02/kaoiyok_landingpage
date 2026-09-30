@@ -539,6 +539,20 @@
   .gallery-grid figure:hover::after{opacity:1}
   .g-span2{grid-column:span 2}
   .g-row2{grid-row:span 2}
+  .videos{margin-top:64px}
+  .videos h3{text-align:center;font-size:clamp(1.4rem,2.6vw,1.8rem);margin-bottom:28px}
+  .video-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .video-card{margin:0}
+  .video-frame{position:relative;aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:var(--ink);box-shadow:var(--shadow)}
+  .video-frame iframe,.video-play,.video-play img{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .video-play{padding:0;cursor:pointer;background:none;display:block}
+  .video-play img{object-fit:cover;transition:transform .6s}
+  .video-play:hover img{transform:scale(1.05)}
+  .video-play .play-icon{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:68px;height:68px;border-radius:50%;background:rgba(255,253,248,.92);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(74,64,54,.35);transition:transform .25s}
+  .video-play:hover .play-icon{transform:translate(-50%,-50%) scale(1.08)}
+  .video-play .play-icon svg{width:26px;height:26px;margin-left:4px;fill:var(--brown-deep)}
+  .video-card figcaption{margin-top:12px;text-align:center;color:var(--ink-soft);font-size:1rem}
+  .video-card figcaption strong{display:block;color:var(--ink);font-family:'Prompt',sans-serif;font-weight:600;font-size:1.1rem}
 
   /* FAQ */
   .faq{background:var(--white)}
@@ -781,6 +795,7 @@
     .gallery-grid{grid-template-columns:1fr 1fr;grid-auto-rows:160px}
     .g-span2,.g-row2{grid-column:auto;grid-row:auto}
     .gallery-grid figure:first-child{grid-column:span 2}
+    .video-grid{grid-template-columns:1fr}
   }
   @media(max-width:560px){
     section{padding:64px 0}
@@ -1046,6 +1061,29 @@
       <figure class="g-span2"><a href="/images/ward-1650.webp" data-lb><img src="/images/ward-1100.webp" srcset="/images/ward-560.webp 560w, /images/ward-1100.webp 1100w, /images/ward-1650.webp 1650w" sizes="(max-width:900px) 100vw, 550px" loading="lazy" decoding="async" alt="ห้องพักรวม เตียงเรียงเป็นแถว มีผ้าม่านกั้นแต่ละเตียง"></a></figure>
       <figure><a href="/images/bathroom-800.webp" data-lb><img src="/images/bathroom-560.webp" srcset="/images/bathroom-320.webp 320w, /images/bathroom-560.webp 560w, /images/bathroom-800.webp 800w" sizes="(max-width:900px) 50vw, 262px" loading="lazy" decoding="async" alt="ห้องน้ำผู้สูงอายุ มีราวจับสแตนเลส เก้าอี้อาบน้ำมีพนักพิง ฝักบัวสายอ่อน และเครื่องทำน้ำอุ่น"></a></figure>
       <figure><a href="/images/kitchen-800.webp" data-lb><img src="/images/kitchen-560.webp" srcset="/images/kitchen-320.webp 320w, /images/kitchen-560.webp 560w, /images/kitchen-800.webp 800w" sizes="(max-width:900px) 50vw, 262px" loading="lazy" decoding="async" alt="ห้องครัวสะอาดสำหรับเตรียมอาหารครบ 3 มื้อให้ผู้สูงอายุ"></a></figure>
+    </div>
+    <div class="videos reveal">
+      <h3>ชมวิดีโอเก้าอี้โยก</h3>
+      <div class="video-grid">
+      <figure class="video-card">
+        <div class="video-frame">
+          <button type="button" class="video-play" data-yt="_xHOYYBufLk" data-title="พาชมศูนย์ (Home Tour)" aria-label="เล่นวิดีโอ พาชมศูนย์ (Home Tour)">
+            <img src="https://i.ytimg.com/vi/_xHOYYBufLk/hqdefault.jpg" loading="lazy" decoding="async" alt="ภาพปกวิดีโอพาชมศูนย์ดูแลผู้สูงอายุเก้าอี้โยก">
+            <span class="play-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+          </button>
+        </div>
+        <figcaption><strong>พาชมศูนย์ (Home Tour)</strong>เดินชมทุกมุมของบ้านเก้าอี้โยก</figcaption>
+      </figure>
+      <figure class="video-card">
+        <div class="video-frame">
+          <button type="button" class="video-play" data-yt="y5tDovlqBI0" data-title="กิจกรรมของผู้สูงอายุ" aria-label="เล่นวิดีโอ กิจกรรมของผู้สูงอายุ">
+            <img src="https://i.ytimg.com/vi/y5tDovlqBI0/hqdefault.jpg" loading="lazy" decoding="async" alt="ภาพปกวิดีโอกิจกรรมผู้สูงอายุที่ศูนย์เก้าอี้โยก">
+            <span class="play-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+          </button>
+        </div>
+        <figcaption><strong>กิจกรรมของผู้สูงอายุ</strong>บรรยากาศกิจกรรมในแต่ละวันที่เก้าอี้โยก</figcaption>
+      </figure>
+      </div>
     </div>
   </div>
 </section>
@@ -1455,6 +1493,18 @@
     if(Math.abs(dx)>50)show(idx+(dx<0?1:-1));
     touchX=null;
   },{passive:true});
+  // วิดีโอ YouTube: โหลด iframe เมื่อกดเล่นเท่านั้น หน้าเว็บจะได้ไม่ช้า
+  document.querySelectorAll('.video-play').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var f = document.createElement('iframe');
+      f.src = 'https://www.youtube-nocookie.com/embed/' + btn.dataset.yt + '?autoplay=1&rel=0';
+      f.title = btn.dataset.title;
+      f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      f.allowFullscreen = true;
+      f.referrerPolicy = 'strict-origin-when-cross-origin';
+      btn.replaceWith(f);
+    });
+  });
 </script>
 </body>
 </html>
